@@ -7,7 +7,6 @@ body{
 }
 
 header,footer{
-    position: absolute;
     display: flex;
 
     align-items: center;
@@ -32,6 +31,9 @@ header{
 }
 
 footer{
+
+    position: absolute;
+
     bottom: 0;
 
     font-size: 1em;
@@ -45,4 +47,6 @@ footer{
     margin-bottom: 1%;
 }
 
+.app{
+}
 
