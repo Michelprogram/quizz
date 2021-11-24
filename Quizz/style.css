@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+}
+
+body{
+    position: relative;
+}
+
+header,footer{
+    position: absolute;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    background-color: hsl(0, 7%, 3%);
+
+    color: white;
+
+    
+}
+
+header{
+
+    font-size: 2em;
+
+    border-radius: 0% 0% 20px 20px;
+
+    letter-spacing: 0.25em;
+}
+
+footer{
+    bottom: 0;
+
+    font-size: 1em;
+
+    letter-spacing: 0.45em;
+
+}
+
+.text-inside{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+
