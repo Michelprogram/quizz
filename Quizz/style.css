@@ -82,6 +82,11 @@ footer{
     animation: input-animation .5s;
 }
 
+#response{
+    margin-top: 5%;
+    font-size: 1.5em;
+}
+
 button{
     font-size: 1.5em;
 

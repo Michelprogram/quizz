@@ -64,7 +64,10 @@ class DomManager{
         this.divApp.appendChild(this.response)
     }
 
-    updateLabel = value => this.label.innerHTML = value
+    updateLabel = value => {
+        this.label.innerHTML = value
+        this.input.value = ""
+    }
 
     updateMinuteur = time => this.minuteur.innerHTML = time
 
