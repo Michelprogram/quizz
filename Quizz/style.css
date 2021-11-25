@@ -4,6 +4,7 @@
 
 body{
     position: relative;
+    height: 100vh;
 }
 
 header,footer{
@@ -48,5 +49,58 @@ footer{
 }
 
 .app{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    justify-content: center;
+
+    margin:15%;
+}
+
+.label-input{
+    font-size: 3em;
+    font-style: italic;
+
+    margin-bottom: 2%;
+}
+
+.input-quizz{
+    text-decoration: none;
+    outline: none;
+
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+
+    font-size:2em;
+
+    width: 50%;
+
+    margin-bottom: 5%;
+
+    animation: input-animation .5s;
+}
+
+button{
+    font-size: 1.5em;
+
+    text-decoration: none;
+    border-radius: 9px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid black;
+
+    transition: box-shadow .5s;
+    cursor: pointer;
+}
+
+button:hover{
+    box-shadow: 6px 5px black;
+}
+
+@keyframes input-animation{
+    0%{ width: 0% }
+    100%{ width: 50%}
 }
 

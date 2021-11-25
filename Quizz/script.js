@@ -8,18 +8,21 @@ let response = " "
 let input = null;
 let label = null;
 
-const quizz = [
-    { question:"Combien font 9 + 10", response: "21" },
-    { question:"C'est quoi un thread" , response: "jsp"}
-]
 const allowedTime = 10;//durée d'une question en secondes
 
+//Done
 //initialise l'interface
 const init = () => {
     //input + label
     label = document.createElement('label')
     input = document.createElement('input')
-    input.setAttribute('class','input')
+
+    input.setAttribute('class','input-quizz')
+    input.setAttribute('id','input-quizz')
+    input.setAttribute('name','input-quizz')
+
+    label.setAttribute('class','label-input')
+    label.setAttribute('for','input-quizz')
 
     label.innerHTML = quizz[compteur].question
     divContainer.appendChild(label);
@@ -28,7 +31,7 @@ const init = () => {
     //button
     const button = document.createElement('button')
     button.textContent = "Soumettre"
-    body.appendChild(button)
+    divContainer.appendChild(button)
  
     button.addEventListener('click',() => {
         checkAnswer();
@@ -54,19 +57,24 @@ const updateUI = () => {
     //input.addEventListener('keyup', (e) => e === 13 ? checkAnswer() : 0 )// ne marche pas
 }
 
+//Done
 const minuteurDom = () =>{
     const span = document.createElement('span')
     span.setAttribute('id','minuteur')
     body.appendChild(span)
 }
+
+//Done
 const spanResponse = () =>{
     const span = document.createElement('span')
     span.setAttribute('id','response')
     body.appendChild(span)
 }
 
+//Done
 const updateMinuteur = (time) => document.querySelector('#minuteur').innerHTML = time
 
+//Done
 //vérifie si la réponse est bonne ou non
 const checkAnswer = (answer) =>{
     if(input.value != quizz[compteur].response){
@@ -77,6 +85,7 @@ const checkAnswer = (answer) =>{
     }
 }
 
+//Done
 //passe à la question suivante
 const nextQuestion = () =>{
     compteur++;
@@ -90,6 +99,7 @@ const nextQuestion = () =>{
     //clearInterval(interval);
 }
 
+//Done
 //gère le minuteur
 const minuteur = (time) =>{
     if (time == 0){
