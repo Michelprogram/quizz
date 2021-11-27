@@ -7,15 +7,15 @@ class DomManager{
     response = null
 
     divApp = null
+    modele = null
 
-    constructor(divApp){
+    constructor(divApp,modele){
+        this.modele = modele
         this.divApp = divApp
-
         this.initDom()
     }
 
     initDom = () =>{
-
         this.initLabel()
         this.initInput()
         this.initButton()
@@ -23,6 +23,7 @@ class DomManager{
         this.initMinuteur()
         this.initResponse()
 
+        this.updateUI()
     }
 
     initLabel = () =>{
@@ -64,13 +65,11 @@ class DomManager{
         this.divApp.appendChild(this.response)
     }
 
-    updateLabel = value => {
-        this.label.innerHTML = value
+    updateUI = value => {
+        this.label.innerHTML = this.modele.label
         this.input.value = ""
+        this.response.innerHTML = this.modele.response
     }
 
     updateMinuteur = time => this.minuteur.innerHTML = time
-
-    updateResponse = text => this.response.innerHTML = text
-
 }
