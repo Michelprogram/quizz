@@ -3,23 +3,16 @@ const saveStorage = new localStorageManager(localStorage)
 class Quizz{
 
     compteur = 0
-    response = ""
-
-    domManager = null
-
     quizz = []
-
     minuteur = null
+    modele = null
 
-    constructor(domManager,quizz){
-
-        this.domManager = domManager
+    constructor(quizz,modele){
+        this.modele = modele
         this.quizz = quizz
-        this.minuteur = new Minuteur(this,domManager,saveStorage)
+        this.minuteur = new Minuteur(this,saveStorage)
 
         this.initCompteur()
-
-        this.domManager.updateLabel(this.quizz[this.compteur].question)
 
         this.minuteur.createIntervall()
 
@@ -30,12 +23,11 @@ class Quizz{
     checkAnswer = (answer) =>{
 
         if(answer != this.quizz[this.compteur].response){
-            this.domManager.updateResponse("Réponse incorrect")
+            this.modele.response = "Réponse incorrect"
             return -1
         }
         else{
-            
-            this.domManager.updateResponse("")
+            this.modele.response = ""
             this.nextQuestion()
             this.minuteur.createIntervall()
             return 1
@@ -46,16 +38,17 @@ class Quizz{
     nextQuestion = () =>{
 
         this.compteur++
+        console.log(this.compteur)
 
         if (this.finish()){
             saveStorage.removeQuizzStorage()
-            this.domManager.updateResponse("Quizz finis")
+            this.modele.response = "Quizz fini"
             this.minuteur.stopIntervall()
             return 0
             
         }
         else{
-            this.domManager.updateLabel(this.quizz[this.compteur].question)
+            this.modele.label = this.quizz[this.compteur].question;
         }
 
         saveStorage.setQuizzStorage(this.compteur)
