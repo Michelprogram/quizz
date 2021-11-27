@@ -1,21 +1,16 @@
-const ALLOWEDTIME = 30
+const ALLOWEDTIME = 10
 
 
 class Minuteur{
 
     intervall = null
-    domManager = null
     quizz = null
 
     time = ALLOWEDTIME
 
-    constructor(quizz,domManager){
-
+    constructor(quizz){
         this.quizz = quizz
-        this.domManager = domManager
-
         this.initTime()
-
     }
 
     initTime = () => this.time = saveStorage.getTimeStorage()
@@ -29,12 +24,14 @@ class Minuteur{
 
             if (this.time == 0){
                 this.stopIntervall()
-                this.quizz.nextQuestion()
+                window.dispatchEvent(new CustomEvent('tempsEcoule'));
                 this.createIntervall()
             }
 
             else{
-                this.domManager.updateMinuteur(this.time)
+                //envoie l'évenement 'updateMinuteur' à l'objet courant avec 'time' pour paramètre.
+                let evt = new CustomEvent('updateMinuteur',{detail:this.time});//le paramètre doit s'appeller detail !
+                window.dispatchEvent(evt);
                 this.time -= 1
                 saveStorage.setTimeStorage(this.time)
             }
