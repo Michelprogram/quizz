@@ -13,7 +13,7 @@ class Minuteur{
         this.initTime()
     }
 
-    initTime = () => this.time = saveStorage.getTimeStorage()
+    initTime = () => this.time = storage.getTimeStorage()
 
     createIntervall = ()=>{
         if(this.intervall != null){
@@ -33,7 +33,7 @@ class Minuteur{
                 let evt = new CustomEvent('updateMinuteur',{detail:this.time});//le paramètre doit s'appeller detail !
                 window.dispatchEvent(evt);
                 this.time -= 1
-                saveStorage.setTimeStorage(this.time)
+                storage.setTimeStorage(this.time)
             }
 
         },1000)
@@ -47,7 +47,7 @@ class Minuteur{
         this.time = ALLOWEDTIME
 
         if(this.quizz.finish()){
-            saveStorage.removeTimeStorage()
+            storage.removeTimeStorage()
         }
     }
 }

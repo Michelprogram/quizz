@@ -1,4 +1,3 @@
-const saveStorage = new localStorageManager(localStorage)
 
 class Quizz{
 
@@ -7,18 +6,18 @@ class Quizz{
     minuteur = null
     modele = null
 
-    constructor(quizz,modele){
+    constructor(quizz,modele,start){
+
         this.modele = modele
         this.quizz = quizz
-        this.minuteur = new Minuteur(this,saveStorage)
 
-        this.initCompteur()
+        this.minuteur = new Minuteur(this)
+
+        this.compteur = start
 
         this.minuteur.createIntervall()
 
     }
-
-    initCompteur = () => this.compteur = saveStorage.getQuizzStorage()
 
     checkAnswer = (answer) =>{
 
@@ -29,7 +28,6 @@ class Quizz{
         else{
             this.modele.response = ""
             this.nextQuestion()
-            this.minuteur.createIntervall()
             return 1
         }
 
@@ -37,21 +35,25 @@ class Quizz{
 
     nextQuestion = () =>{
 
+        let event = null
+
         this.compteur++
-        console.log(this.compteur)
 
         if (this.finish()){
-            saveStorage.removeQuizzStorage()
+            event = new CustomEvent('endQuizz',{ detail : 0 })
+            storage.removeQuizzStorage()
             this.modele.response = "Quizz fini"
             this.minuteur.stopIntervall()
-            return 0
             
         }
         else{
             this.modele.label = this.quizz[this.compteur].question;
+            this.minuteur.createIntervall()
+
+            event = new CustomEvent('nextQuestion',{ detail : this.compteur })
         }
 
-        saveStorage.setQuizzStorage(this.compteur)
+        window.dispatchEvent(event)
 
     }
 
