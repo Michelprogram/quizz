@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 *{
     margin: 0;
 }
@@ -102,6 +104,12 @@ button{
 
 button:hover{
     box-shadow: 6px 5px black;
+}
+
+.minuteur{
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 2%;
+    font-size: 1.75em;
 }
 
 @keyframes input-animation{

@@ -6,6 +6,7 @@ window.addEventListener('load', ()=>{
 
     const quizz = new Quizz(domManager,questions)
 
+
     domManager.button.addEventListener('click', _ => quizz.checkAnswer(domManager.input.value))
 
 })

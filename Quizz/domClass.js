@@ -54,7 +54,7 @@ class DomManager{
 
     initMinuteur = () =>{
         this.minuteur = document.createElement('span')
-        this.minuteur.setAttribute('id','minuteur')
+        this.minuteur.setAttribute('class','minuteur')
         this.divApp.appendChild(this.minuteur)
     }
 

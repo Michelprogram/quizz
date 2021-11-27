@@ -1,32 +1,31 @@
-const ALLOWEDTIME = 5
-
 const saveStorage = new localStorageManager(localStorage)
 
 class Quizz{
 
     compteur = 0
-    time = ALLOWEDTIME
     response = ""
 
     domManager = null
 
     quizz = []
 
+    minuteur = null
+
     constructor(domManager,quizz){
+
         this.domManager = domManager
         this.quizz = quizz
+        this.minuteur = new Minuteur(this,domManager,saveStorage)
 
         this.initCompteur()
 
         this.domManager.updateLabel(this.quizz[this.compteur].question)
 
-        //this.minuteur()
+        this.minuteur.createIntervall()
 
     }
 
-    initCompteur = () =>{
-        this.compteur = saveStorage.getQuizzStorage()
-    }
+    initCompteur = () => this.compteur = saveStorage.getQuizzStorage()
 
     checkAnswer = (answer) =>{
 
@@ -38,6 +37,7 @@ class Quizz{
             
             this.domManager.updateResponse("")
             this.nextQuestion()
+            this.minuteur.createIntervall()
             return 1
         }
 
@@ -47,20 +47,21 @@ class Quizz{
 
         this.compteur++
 
-        if (this.compteur == this.quizz.length ){
+        if (this.finish()){
             saveStorage.removeQuizzStorage()
             this.domManager.updateResponse("Quizz finis")
-
+            this.minuteur.stopIntervall()
             return 0
             
         }
         else{
             this.domManager.updateLabel(this.quizz[this.compteur].question)
-            //this.minuteur(ALLOWEDTIME)
         }
 
         saveStorage.setQuizzStorage(this.compteur)
 
     }
+
+    finish = () => this.quizz.length == this.compteur
 
 }
