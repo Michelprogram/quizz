@@ -120,7 +120,3 @@ window.addEventListener('load',() => {
     buttonDOM()
 
 })
-
-export {
-    checkAnswer
-}
