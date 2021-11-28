@@ -1,6 +1,6 @@
 //Pour jest
 
-const ALLOWEDTIME = 10
+const ALLOWEDTIME = 30
 
 
 class Minuteur{
