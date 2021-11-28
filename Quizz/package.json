@@ -4,12 +4,15 @@
   "description": "Jeux quizz web",
   "main": "script.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "babel": "./node_modules/.bin/babel src --out-dir babel"
   },
   "author": "Caruso Daryl Gauron Dorian",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
     "jest": "^27.3.1"
   }
 }
