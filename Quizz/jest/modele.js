@@ -1,6 +1,5 @@
 class Modele{
 
-    //Jeux de données du quizz
     questions = [
         { question:"Combien font 9 + 10 ?", response: "19" },
         { question:"C'est quoi un thread ?" , response: "un processus"},
@@ -11,8 +10,9 @@ class Modele{
     response = " "
     label = " "
 
-    //Prend en paramètre un index pour savoir si le quizz a déjà commencé ou non
-    constructor(index){
+     constructor(index){
         this.label = this.questions[index].question;
     }
 }
+
+export default Modele

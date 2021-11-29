@@ -38,6 +38,6 @@ var localStorageManager = function localStorageManager(storage) {
   this.storage = storage;
 };
 /*
-    Export pour les test JEST
+    Pour jest décommenter la ligne suivante
 */
 //export default localStorageManager

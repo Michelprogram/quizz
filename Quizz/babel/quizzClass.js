@@ -4,6 +4,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/*
+    Pour jest décommenter la ligne suivante
+*/
+//import Minuteur from "./minuteur"
 var Quizz = function Quizz(quizz, modele, start) {
   var _this = this;
 
@@ -64,4 +68,11 @@ var Quizz = function Quizz(quizz, modele, start) {
   this.minuteur = new Minuteur(this);
   this.compteur = start;
   this.minuteur.createIntervall();
+  window.addEventListener("click", function () {
+    return console.log("test");
+  });
 };
+/*
+    Pour jest décommenter la ligne suivante
+*/
+//export default Quizz

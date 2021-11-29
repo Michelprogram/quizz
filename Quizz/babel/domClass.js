@@ -98,3 +98,7 @@ var DomManager = function DomManager(divApp, modele) {
   this.divApp = divApp;
   this.initDom();
 };
+/*
+    Pour jest décommenter la ligne suivante
+*/
+//export default DomManager

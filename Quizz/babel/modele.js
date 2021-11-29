@@ -28,6 +28,6 @@ var Modele = function Modele(index) {
   this.label = this.questions[index].question;
 };
 /*
-    Export pour les test JEST
+    Pour jest décommenter la ligne suivante
 */
 //export default Modele

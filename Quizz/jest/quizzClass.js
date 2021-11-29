@@ -1,3 +1,5 @@
+import Minuteur from "./minuteur"
+
 class Quizz{
 
     compteur = 0
@@ -5,7 +7,6 @@ class Quizz{
     minuteur = null
     modele = null
 
-    //Débute un minuteur au début de la partie
     constructor(quizz,modele,start){
 
         this.modele = modele
@@ -17,9 +18,10 @@ class Quizz{
 
         this.minuteur.createIntervall()
 
+        window.addEventListener("click",()=>console.log("test"))
+
     }
 
-    //Vérifie la correspondance de la réponse saisie et attendu
     checkAnswer = (answer) =>{
 
         if(answer != this.quizz[this.compteur].response){
@@ -34,7 +36,6 @@ class Quizz{
 
     }
 
-    //Passe à la prochaine question, s'arrête si il n'y a plus de question
     nextQuestion = () =>{
 
         let event = null
@@ -59,7 +60,8 @@ class Quizz{
 
     }
 
-    //S'arrête quand le compteur vaut la taille du tableau de question
     finish = () => this.quizz.length == this.compteur
 
 }
+
+export default Quizz

@@ -1,5 +1,5 @@
-//Temps par question
 const ALLOWEDTIME = 30
+
 
 class Minuteur{
 
@@ -13,10 +13,8 @@ class Minuteur{
         this.initTime()
     }
 
-    //Initialise l'attribut time en fonction du contenu dans storage
     initTime = () => this.time = storage.getTimeStorage()
 
-    //Crée un interval qui toute les 1 secondes décrémente l'attribut time, arrivé à 0 l'intervall s'arrête
     createIntervall = ()=>{
         if(this.intervall != null){
             this.stopIntervall()
@@ -41,7 +39,6 @@ class Minuteur{
         },1000)
     }
 
-    //Arrête l'interval
     stopIntervall = () =>{
         
         clearInterval(this.intervall)
@@ -54,3 +51,5 @@ class Minuteur{
         }
     }
 }
+
+export default Minuteur
