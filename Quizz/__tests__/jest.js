@@ -2,8 +2,6 @@ import { describe, it, test, expect, jest } from '@jest/globals'
 
 import sum from '../jest/script'
 
-import { Minuteur } from "../src/minuteur"
-
 import FakeStorage from "../jest/fakeStorage"
 
 import Modele from "../src/modele"
@@ -11,6 +9,8 @@ import Modele from "../src/modele"
 import localStorageManager from '../src/localStorage'
 
 import Quizz from "../src/quizzClass"
+
+import DomManager from "../src/domClass"
 
 
 /* Template pour crée un test
@@ -68,15 +68,32 @@ describe("Test si une réponse correspond au jeux de données des questions",()=
 
     global.storage = new localStorageManager(new FakeStorage())
 
-    const dispatchEventSpy = jest.spyOn(document, 'dispatchEvent');
-
     //Commence à la question Qui a créé git ?
     const modele = new Modele(2)
 
     const quizz = new Quizz(modele.questions,modele,2)
 
-    it("Réponse correct",()=> expect(quizz.checkAnswer("linus torvald")).toBe(1))
+    it("Réponse incorrect", () => expect(quizz.checkAnswer("alan turing")).toBe(-1) )
 
-    it("Réponse incorrect", ()=> expect(quizz.checkAnswer("alan turing")).toBe(0) )
+    it("Réponse correct",() => expect(quizz.checkAnswer("linus torvald")).toBe(1))
 
+
+})
+
+describe("Génération du dom", () =>{
+
+    document.body.innerHTML = "<div class='app'></div>"
+
+    const modele = new Modele(0)
+
+    const app = document.querySelector('.app')
+
+    const dom = new DomManager(app,modele)
+
+    it("Ajout du label ", ()=> {
+
+        const label = app.querySelector('.label-input')
+
+        expect(label.outerHTML).toBe(`<label class="label-input" for="input-quizz">Combien font 9 + 10 ?</label>`)
+    })
 })
