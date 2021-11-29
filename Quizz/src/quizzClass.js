@@ -1,3 +1,5 @@
+import Minuteur from "./minuteur"
+
 class Quizz{
 
     compteur = 0
@@ -59,3 +61,5 @@ class Quizz{
     finish = () => this.quizz.length == this.compteur
 
 }
+
+export default Quizz

@@ -1,4 +1,4 @@
-import { describe, it, test, expect } from '@jest/globals'
+import { describe, it, test, expect, jest } from '@jest/globals'
 
 import sum from '../jest/script'
 
@@ -64,17 +64,19 @@ describe("Début du questionnaire avec localStorage et sans localStorage", ()=>{
 
 })
 
-/* describe("Test si une réponse correspond au jeux de données des questions",()=>{
+describe("Test si une réponse correspond au jeux de données des questions",()=>{
 
-    const storage = new localStorageManager(new FakeStorage())
+    global.storage = new localStorageManager(new FakeStorage())
+
+    const dispatchEventSpy = jest.spyOn(document, 'dispatchEvent');
 
     //Commence à la question Qui a créé git ?
     const modele = new Modele(2)
 
     const quizz = new Quizz(modele.questions,modele,2)
 
-    it("Réponse correct",()=> expect(quizz.checkAnswer("linus torvald")).toBe(true))
+    it("Réponse correct",()=> expect(quizz.checkAnswer("linus torvald")).toBe(1))
 
-    it("Réponse incorrect", ()=> expect(quizz.checkAnswer("alan turing")).toBe(False) )
+    it("Réponse incorrect", ()=> expect(quizz.checkAnswer("alan turing")).toBe(0) )
 
-}) */
+})

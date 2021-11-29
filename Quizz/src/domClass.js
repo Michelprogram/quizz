@@ -73,3 +73,5 @@ class DomManager{
 
     updateMinuteur = time => this.minuteur.innerHTML = time
 }
+
+export default DomManager
