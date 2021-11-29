@@ -19,4 +19,4 @@ class Modele{
     Export pour les test JEST
 */
 
-//export default Modele
+export default Modele

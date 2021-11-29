@@ -54,3 +54,4 @@ class Minuteur{
     }
 }
 
+export default Minuteur

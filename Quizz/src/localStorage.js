@@ -31,4 +31,4 @@ class localStorageManager{
     Export pour les test JEST
 */
 
-//export default localStorageManager
+export default localStorageManager

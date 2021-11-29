@@ -64,9 +64,9 @@ describe("Début du questionnaire avec localStorage et sans localStorage", ()=>{
 
 })
 
-/* describe("Test si une réponse correspond au jeux de données des questions",()=>{
+describe("Test si une réponse correspond au jeux de données des questions",()=>{
 
-    const storage = new localStorageManager(new FakeStorage())
+    global.storage = new localStorageManager(new FakeStorage())
 
     //Commence à la question Qui a créé git ?
     const modele = new Modele(2)
@@ -77,4 +77,4 @@ describe("Début du questionnaire avec localStorage et sans localStorage", ()=>{
 
     it("Réponse incorrect", ()=> expect(quizz.checkAnswer("alan turing")).toBe(False) )
 
-}) */
+})
